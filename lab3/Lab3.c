@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 /* The problem definiation and Solution's Algo :
     
     First  : i will check if the number of the args is enough or not 
@@ -43,13 +44,31 @@ int main(int argc,char* argv[]){
 
     if(strlen(argv[1])>strlen(argv[2]))
     {
-        joy=strlwr(argv[2]);
-        Kon=strlwr(argv[1]);
+        joy=argv[2];
+        Kon=argv[1];
+        for(int i=0;i<strlen(argv[2]);i++)
+        {
+            joy[i]=tolower(argv[2][i]);
+        }
+        for(int i=0;i<strlen(argv[1]);i++)
+        {
+            Kon[i]=tolower(argv[1][i]);
+        }
     }
     else
     {
-        joy=strlwr(argv[1]);
-        Kon=strlwr(argv[2]);
+        joy=argv[1];
+        Kon=argv[2];
+        for(int i=0;i<strlen(argv[1]);i++)
+        {
+            printf("herre1 %c",tolower(argv[1][i]));
+            joy[i]=tolower(argv[1][i]);
+        }
+        for(int i=0;i<strlen(argv[2]);i++)
+        {
+            printf("herre");
+            Kon[i]=tolower(argv[2][i]);
+        }
     }
 
 
@@ -57,6 +76,7 @@ int main(int argc,char* argv[]){
     int* arr=malloc(sizeof(int)*strlen(joy));
     for(int i=0;i<strlen(joy);i++)
     {
+        printf("from the loop \n");
         arr[i]=-1;
     }
     int counter=0;
@@ -64,6 +84,7 @@ int main(int argc,char* argv[]){
     {
         if(Kon[i]==joy[counter])
         {
+            printf("from the loop \n");
             arr[counter]=i;
             counter++;
         }
@@ -71,6 +92,7 @@ int main(int argc,char* argv[]){
 
     for(int i=0;i<strlen(joy)-1;i++)
     {
+        printf("from the loop \n");
         if(arr[i]<arr[i+1])
         {
             continue;
@@ -80,6 +102,4 @@ int main(int argc,char* argv[]){
     }   
     printf("1"); 
     return 1;
-
-
 }
